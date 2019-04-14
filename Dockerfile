@@ -17,5 +17,5 @@ RUN conda update conda
 
 # Create environment
 COPY environment.yml /tmp/environment.yml
-RUN conda env create -n base -f /tmp/environment.yml && \
+RUN conda env create -n ldsa-base -f /tmp/environment.yml && \
     rm /tmp/environment.yml
