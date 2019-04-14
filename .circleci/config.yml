@@ -13,4 +13,4 @@ jobs:
 
       - run: docker build -t ldssa/conda-base:latest .
 
-      - run: docker push company/conda-base:latest
+      - run: docker push ldssa/conda-base:latest
