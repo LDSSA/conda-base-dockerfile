@@ -5,7 +5,7 @@ SHELL ["/bin/bash", "-c"]
 #RUN echo -e 'LANG=en_US.UTF-8\nLC_ALL=en_US.UTF-8' > /etc/default/locale
 
 RUN groupadd -r student && \
-    useradd -u 1000 -r -M -d /student -g student -s /bin/false student && \
+    useradd -u 1000 -r -m -d /student -g student -s /bin/false student && \
     # Add required packages
     apt-get update && \
     apt-get upgrade -y && \
