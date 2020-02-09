@@ -16,5 +16,5 @@ jobs:
 #       - run: docker push ldssa/conda-base:latest
 
       # build the pip version
-      - run: docker build -t ldssa/pip-base:latest ./Dockerfile-pip
+      - run: docker build -t ldssa/pip-base:latest -f Dockerfile-pip .
       - run: docker push ldssa/pip-base:latest
