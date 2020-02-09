@@ -11,6 +11,10 @@ jobs:
 
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
 
-      - run: docker build -t ldssa/conda-base:latest .
+      # build the conda version
+#       - run: docker build -t ldssa/conda-base:latest .
+#       - run: docker push ldssa/conda-base:latest
 
-      - run: docker push ldssa/conda-base:latest
+      # build the pip version
+      - run: docker build -t ldssa/pip-base:latest ./Dockerfile-pip
+      - run: docker push ldssa/pip-base:latest
