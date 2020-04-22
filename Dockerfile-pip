@@ -1,8 +1,14 @@
 FROM python:3.7.6
 
-COPY requirements.txt requirements.txt
-    
-RUN apt-get update -qy
+RUN groupadd -r student && \
+    useradd -u 1000 -r -m -d /student -g student -s /bin/false student && \
+    # Add required packages
+    apt-get update && \
+    apt-get upgrade -y && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+      git
 
-RUN pip install -U pip \
-    &&   pip install -r requirements.txt
+# Create environment
+COPY requirements.txt requirements.txt
+RUN pip install -U pip && \
+    pip install -r requirements.txt
