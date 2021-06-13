@@ -1,8 +1,4 @@
-FROM conda/miniconda3
-
-SHELL ["/bin/bash", "-c"]
-
-#RUN echo -e 'LANG=en_US.UTF-8\nLC_ALL=en_US.UTF-8' > /etc/default/locale
+FROM python:3.7
 
 RUN groupadd -r student && \
     useradd -u 1000 -r -m -d /student -g student -s /bin/false student && \
@@ -12,10 +8,4 @@ RUN groupadd -r student && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
       git
 
-# Update conda
-RUN conda update conda
-
-# Create environment
-COPY environment.yml /tmp/environment.yml
-RUN conda env create -n ldsa-base -f /tmp/environment.yml && \
-    rm /tmp/environment.yml
+RUN pip install -U pip wheel
